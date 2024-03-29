@@ -1,10 +1,21 @@
 import logging
 import pandas as pd
+from sklearn.base import RegressionMixin
+from typing import Tuple
+from typing_extensions import Annotated
 
 from zenml import step
 
+from src.evaluation import MSE,R2,RMSE
+
 @step
-def evaluate_model(df:pd.DataFrame)->None:
+def evaluate_model(model:RegressionMixin,
+                   x_test:pd.DataFrame,
+                   y_test:pd.DataFrame,
+                   )->Tuple[
+                       Annotated[float,'r2_score'],
+                       Annotated[float,'rmse'],
+                   ]:
     
     """
     Evaluates the model on the ingested data.
@@ -12,4 +23,20 @@ def evaluate_model(df:pd.DataFrame)->None:
     Args:
     df: The Ingested Data
     """
-    pass
+    try:
+        prediction = model.predict(x_test)
+        mse_class = MSE()
+        mse=mse_class.calculate_scores(y_test,prediction)
+        
+        r2_class = R2()
+        r2=r2_class.calculate_scores(y_test,prediction)
+        
+        rmse_class = RMSE()
+        rmse = rmse_class.calculate_scores(y_test,prediction)
+        
+        return r2_score,rmse
+    except Exception as e:
+        logging.error("Error in Evaluating the model:{}".format(e))
+        raise e
+    
+    
