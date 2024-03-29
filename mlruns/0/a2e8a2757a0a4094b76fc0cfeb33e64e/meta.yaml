@@ -1,0 +1,15 @@
+artifact_uri: file:///F:/Customer_Satisfaction/mlruns/0/a2e8a2757a0a4094b76fc0cfeb33e64e/artifacts
+end_time: 1711718675314
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a2e8a2757a0a4094b76fc0cfeb33e64e
+run_name: vaunted-cub-73
+run_uuid: a2e8a2757a0a4094b76fc0cfeb33e64e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1711718672920
+status: 3
+tags: []
+user_id: ADMIN
