@@ -2,7 +2,7 @@ import logging
 from typing import Tuple
 
 import pandas as pd
-from model.data_cleaning import (
+from src.data_cleaning import (
     DataCleaning,
     DataDivideStrategy,
     DataPreprocessStrategy,
@@ -29,6 +29,8 @@ def clean_data(
     """
     try:
         preprocess_strategy = DataPreprocessStrategy()
+        dropped_columns = preprocess_strategy.handle_data(data)
+        print("Dropped columns:", dropped_columns)
         data_cleaning = DataCleaning(data, preprocess_strategy)
         preprocessed_data = data_cleaning.handle_data()
 

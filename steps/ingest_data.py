@@ -5,21 +5,16 @@ from zenml import step
 
 class IngestData:
     """
-    Ingesting the data from the data_path.
+    Data ingestion class which ingests data from the source and returns a DataFrame.
     """
-    def __init__(self, data_path: str):
-        """
-        Args:
-            data_path : Path of the data_path
-        """
-        self.data_path = data_path
 
-    def get_data(self):
-        """
-        Ingesting the data from the data_path.
-        """
-        logging.info(f'Ingesting data from {self.data_path}')
-        return pd.read_csv(self.data_path)
+    def __init__(self) -> None:
+        """Initialize the data ingestion class."""
+        pass
+
+    def get_data(self) -> pd.DataFrame:
+        df = pd.read_csv("./data/olist_customers_dataset.csv",index_col=0,parse_dates=True)
+        return df
     
 @step
 def ingest_df(data_path: str) -> pd.DataFrame:
@@ -34,7 +29,7 @@ def ingest_df(data_path: str) -> pd.DataFrame:
     """
     
     try:
-        ingestor = IngestData(data_path)
+        ingestor = IngestData()
         df = ingestor.get_data()
         return df  
     except Exception as e:

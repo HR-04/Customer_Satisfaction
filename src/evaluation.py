@@ -27,7 +27,7 @@ class MSE(Evaluation):
     Evaluation Stratergy that uses Mean Squared Error
     """
     
-    def calaculate_scores(self,y_true:np.ndarray,y_pred:np.ndarray):
+    def calculate_scores(self,y_true:np.ndarray,y_pred:np.ndarray):
         """
         Calculate the scores for the model
         
@@ -49,7 +49,7 @@ class R2(Evaluation):
     """
     Evaluation Stratergy that uses Root Mean Square Error
     """
-    def calaculate_scores(self,y_true:np.ndarray,y_pred:np.ndarray):
+    def calculate_scores(self,y_true:np.ndarray,y_pred:np.ndarray):
         """
         Calculate the scores for the model
         
@@ -72,7 +72,7 @@ class RMSE(Evaluation):
     """
     Evalauation Stratergy That uses Root Mean Squared Error
     """
-    def calaculate_scores(self, y_true:np.ndarray, y_pred:np.ndarray):
+    def calculate_scores(self, y_true:np.ndarray, y_pred:np.ndarray):
         """
         Calculate the scores for the model
         
